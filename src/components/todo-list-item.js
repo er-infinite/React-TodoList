@@ -9,8 +9,22 @@ export default class TodoListItem extends React.Component{
         };
     }
 
-    renderActionSection() {
+    renderActionsSection() {
+        if (this.state.isEditing){
+            return (
+                <td>
+                    <button>Save</button>
+                    <button>Cancel</button>
+                </td>
+            );
+        }
 
+        return (
+            <td>
+                <button onClick={this.onEditClick.bind(this)}>Edit</button>
+                <button>Delete</button>
+            </td>
+        );
     }
 
 
@@ -18,10 +32,7 @@ export default class TodoListItem extends React.Component{
         return(
             <tr>
                 <td>{this.props.task}</td>
-                <td>
-                    <button onClick={this.onEditClick.bind(this)}>Edit</button>
-                    <button>Delete</button>
-                </td>
+                {this.renderActionsSection()}
             </tr>
         );
     }
