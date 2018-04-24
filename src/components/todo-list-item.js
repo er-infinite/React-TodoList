@@ -8,6 +8,18 @@ export default class TodoListItem extends React.Component{
             isEditing: false
         };
     }
+    //Styling to do tasks. If completed = green, if not completed = red.
+    renderTaskSection(){
+        const {task, isCompleted} = this.props;
+        const taskStyle = {
+            color: isCompleted ? 'green' : 'red',
+            cursor: 'pointer'
+        };
+
+        return(
+            <td style={taskStyle}>{task}</td>
+        );
+    }
 
     renderActionsSection() {
         if (this.state.isEditing){
@@ -31,7 +43,7 @@ export default class TodoListItem extends React.Component{
     render(){
         return(
             <tr>
-                <td>{this.props.task}</td>
+                {this.renderTaskSection()}
                 {this.renderActionsSection()}
             </tr>
         );
