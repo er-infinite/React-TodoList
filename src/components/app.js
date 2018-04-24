@@ -29,10 +29,10 @@ export default class App extends React.Component{
         return(
             <div>
                 <h1>React To Do App</h1>
-                <CreateTodo />
+                <CreateTodo createTask={this.createTask.bind(this)}/>
                 <TodoList
                     todos={this.state.todos}
-                    createTask={this.createTask.bind(this)}
+
                 />
 
             </div>
