@@ -30,10 +30,22 @@ export default class App extends React.Component{
             <div>
                 <h1>React To Do App</h1>
                 <CreateTodo />
-                <TodoList todos={this.state.todos} />
+                <TodoList
+                    todos={this.state.todos}
+                    createTask={this.createTask.bind(this)}
+                />
 
             </div>
         );
+    }
+
+    // When user creates task, it will be added to task list (todos)
+    createTask(){
+        this.state.todos({
+            task,
+            isCompleted: false
+        });
+        this.setState({todos: this.state.todos});
     }
 }
 
