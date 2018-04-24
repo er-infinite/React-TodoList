@@ -11,13 +11,18 @@ export default class TodoListItem extends React.Component{
     //Styling to do tasks. If completed = green, if not completed = red.
     renderTaskSection(){
         const {task, isCompleted} = this.props;
+
+        console.log(this.props); //debugging tasks
+
         const taskStyle = {
             color: isCompleted ? 'green' : 'red',
             cursor: 'pointer'
         };
 
         return(
-            <td style={taskStyle}>{task}</td>
+            <td style={taskStyle} onClick={this.props.toggleTask.bind(this, task)}>
+                {task}
+            </td>
         );
     }
 
