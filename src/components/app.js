@@ -40,12 +40,13 @@ export default class App extends React.Component{
     }
 
     // When user creates task, it will be added to task list (todos)
-    createTask(){
-        this.state.todos({
+    // and automatically set to not done (isCompleted:false)
+    createTask(task){
+        this.state.todos.push({
             task,
             isCompleted: false
         });
-        this.setState({todos: this.state.todos});
+        this.setState({ todos: this.state.todos});
     }
 }
 
