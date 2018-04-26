@@ -34,11 +34,14 @@ export default class App extends React.Component{
                     todos={this.state.todos}
                     toggleTask={this.toggleTask.bind(this)}
                     saveTask={this.saveTask.bind(this)}
+                    deleteTask={this.deleteTask.bind(this)}
                 />
 
             </div>
         );
     }
+
+    //METHODS
 
     toggleTask(task){
         const foundTodo = _.find(this.state.todos, todo => todo.task === task);
@@ -61,6 +64,13 @@ export default class App extends React.Component{
         foundTodo.task = newTask;
         this.setState({todos: this.state.todos});
     }
+    //"taskToDelete" so that it doesn't conflict with other function
+    deleteTask(taskToDelete){
+        //Lodash: remove it from an array that we match it with
+        _.remove(this.state.todos, todo => todo.task === taskToDelete);
+        this.setState({ todos: this.state.todos});
+    }
+
 }
 
 
